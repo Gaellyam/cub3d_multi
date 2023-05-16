@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:17:15 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 12:27:07 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 14:07:58 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_all_setup(t_game *game)
 	ft_check_size_res(game);
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		exit_game(game, "ERROR\n Initializing mlx fail.\n", 1);
+		exit_game(game, "Error\n Initializing mlx fail.\n", 1);
 	allocate_buffer(game);
 	load_texture(game);
 	game->img.img = mlx_new_image(game->mlx, game->setup.res_width,
@@ -53,18 +53,18 @@ void	allocate_buffer(t_game *game)
 	game->buf = ft_calloc(game->setup.res_height
 			* game->setup.res_width, sizeof(int **));
 	if (!game->buf)
-		exit_game(game, "ERROR:\n Malloc Fail!", 1);
+		exit_game(game, "Error:\n Malloc Fail!", 1);
 	i = 0;
 	while (i < game->setup.res_height)
 	{
 		game->buf[i] = ft_calloc(game->setup.res_width, sizeof(int *));
 		if (!game->buf[i])
-			exit_game(game, "ERROR:\n Malloc Fail!", 1);
+			exit_game(game, "Error:\n Malloc Fail!", 1);
 		i++;
 	}
 	game->n_buffer = ft_calloc(game->setup.res_width, sizeof(double *));
 	if (!game->n_buffer)
-		exit_game(game, "ERROR:\n Malloc Fail!", 1);
+		exit_game(game, "Error:\n Malloc Fail!", 1);
 }
 
 void	load_texture(t_game *game)
@@ -93,7 +93,7 @@ void	load_image(t_game *game, int *texture, char *path, t_img *img)
 	img->img = mlx_xpm_file_to_image(game->mlx, path,
 			&img->width, &img->height);
 	if (!img->img || !img->height || !img->width)
-		ft_error("ERROR\n Texture path fail");
+		ft_error("Error\n Texture path fail");
 	img->data = (int *)mlx_get_data_addr(img->img,
 			&img->bpp, &img->size_l, &img->endian);
 	y = 0;

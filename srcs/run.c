@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 11:50:00 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 11:58:39 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 15:08:12 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	run_game(t_game *game)
 	game->win = mlx_new_window(game->mlx,
 			game->setup.res_width, game->setup.res_height, "cub3d");
 	if (!game->win)
-		exit_game(game, "ERROR\n Creating windows fail.\n", 1);
+		exit_game(game, "Error\n Creating windows fail.\n", 1);
 	mlx_hook(game->win, EVENT_KEY_PRESS, 0, &key_press, game);
 	mlx_hook(game->win, EVENT_KEY_EXIT, 0, &key_exit, game);
 	mlx_loop_hook(game->mlx, &main_loop, game);

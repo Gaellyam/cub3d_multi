@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:02:46 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 12:11:43 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 14:08:59 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static int	iscubefile(char *filename)
 void	open_cub(t_game *game, char *filename)
 {
 	if (!(iscubefile(filename)))
-		ft_error("ERROR:\n Not .cub extention!");
+		ft_error("Error:\n Not .cub extention!");
 	game->fd = open(filename, O_RDONLY);
 	if (game->fd == -1)
-		ft_error("ERROR:\n No such cub file available");
+		ft_error("Error:\n No such cub file available");
 }
 
 int	check_param(t_game *game, char *info)
@@ -67,7 +67,7 @@ void	read_info(t_game *game)
 			continue ;
 		info = ft_strtrim(line, " ");
 		if (!info)
-			ft_error("ERROR:\n Strtrim fail!");
+			ft_error("Error:\n Strtrim fail!");
 		flag = check_param(game, info);
 		free(info);
 		if (flag == MAP_START)
@@ -82,5 +82,5 @@ void	validate_info(t_game *game)
 	if (!game->setup.tex.path[C_NO] || !game->setup.tex.path[C_SO]
 		|| !game->setup.tex.path[C_EA] || !game->setup.tex.path[C_WE]
 		|| game->setup.tex.floor == -1 || game->setup.tex.ceiling == -1)
-		ft_error("ERROR:\n Texture Info Missing");
+		ft_error("Error:\n Texture Info Missing");
 }

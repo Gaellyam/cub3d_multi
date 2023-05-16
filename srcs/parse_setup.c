@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 09:16:57 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 13:52:38 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 15:12:54 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,6 @@ void	ft_check_size_res(t_game *game)
 		else
 			game->setup.res_width = TEX_WIDTH;
 	}
-/*	if ((game->setup.res_height % TEX_HEIGHT) != 0)
-	{
-		if (game->setup.res_height > TEX_HEIGHT)
-		{
-			while ((width % TEX_HEIGHT) != 0)
-				height--;
-			game->setup.res_height = width;
-		}
-		else
-			game->setup.res_height = TEX_HEIGHT;
-	}*/
 }
 
 static int	isxmpfile(char *filename)
@@ -73,16 +62,16 @@ void	parse_texture(t_game *game, char *line, int flag)
 
 	buf = ft_split(line, ' ');
 	if (!buf)
-		ft_error("ERROR:\n Split fail");
+		ft_error("Error:\n Split fail");
 	if (buf[2])
 		ft_error("Error:\n Too many arguments given for texture!");
 	if (game->setup.param[flag] != -1)
-		ft_error("ERROR:\n Double texture given!");
+		ft_error("Error:\n Double texture given!");
 	if (!line || !isxmpfile(buf[1]))
-		ft_error("ERROR:\n Image format is not .xpm");
+		ft_error("Error:\n Image format is not .xpm");
 	fd = open(buf[1], O_RDONLY);
 	if (fd == -1)
-		ft_error("ERROR:\n Texture paths available!");
+		ft_error("Error:\n Texture paths available!");
 	close(fd);
 	game->setup.tex.path[flag] = ft_strdup(buf[1]);
 	game->setup.param[flag] = flag;
@@ -95,7 +84,7 @@ void	parse_color(t_game *game, char *line, int flag)
 	int		i;
 
 	if (game->setup.param[flag] != -1)
-		ft_error("ERROR:\n Double texture given!");
+		ft_error("Error:\n Double texture given!");
 	if (line[0] == 'C' || line[0] == 'F')
 		line += 1;
 	buf = ft_split(line, ',');
