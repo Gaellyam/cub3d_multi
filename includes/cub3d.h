@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 13:08:02 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 01:49:11 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 13:32:47 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # include <fcntl.h>
 # include "../libs/libft/libft.h"
 # include "../libs/mlx/mlx.h"
+
 
 typedef struct	s_ray
 {
@@ -209,6 +210,8 @@ void			allocate_buffer(t_game *game);
 void			load_texture(t_game *game);
 void			load_image(t_game *game, int *texture, char *path, t_img *img);
 
+void	ft_check_size_res(t_game *game);
+int	ft_atoi2(const char *str);
 
 #endif
 

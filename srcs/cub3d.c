@@ -6,13 +6,13 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 08:43:11 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/15 22:53:34 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 12:20:11 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void		check_argument(int argc)
+void	check_argument(int argc)
 {
 	if (argc > 2)
 		ft_error("Error:\n Too many arguments given!");
@@ -20,7 +20,7 @@ void		check_argument(int argc)
 		ft_error("Error:\n Too few arguments given!");
 }
 
-int			main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 

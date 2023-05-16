@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:04:17 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 01:48:24 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 12:17:17 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-		exit_game(game,"EXIT GAME\n",0);
-	if (keycode == KEY_W|| keycode == 199 || keycode == 65362)
+		exit_game(game, "EXIT GAME\n", 0);
+	if (keycode == KEY_W)
 		move_front_back(game, game->player.move_speed);
-	if (keycode == KEY_S|| keycode == 115 || keycode == 65364)
+	if (keycode == KEY_S)
 		move_front_back(game, -game->player.move_speed);
-	if (keycode == KEY_A|| keycode == 97 || keycode == 65361)
+	if (keycode == KEY_A)
 		move_left_right(game, game->player.move_speed);
-	if (keycode == KEY_D|| keycode == 100 || keycode == 65363)
+	if (keycode == KEY_D)
 		move_left_right(game, -game->player.move_speed);
 	if (keycode == KEY_RIGHT)
 		rotate_player(&game->player, game->player.rot_speed);
@@ -33,10 +33,9 @@ int	key_press(int keycode, t_game *game)
 
 int	key_exit(void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)param;
-	exit_game(game,"EXIT GAME\n",0);
+	exit_game(game, "EXIT GAME\n", 0);
 	return (0);
-	
 }

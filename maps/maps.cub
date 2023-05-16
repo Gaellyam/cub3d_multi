@@ -3,9 +3,8 @@ SO textures/rsz_skeleton.xpm
 WE textures/redbrick.xpm
 EA textures/logomiss.xpm
 
-F 255,255,120
+F 255, ,0
 C 0,255,255
-
 
 
        111111111111111111111111

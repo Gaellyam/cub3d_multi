@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glamy <glamy@student.s19.be>               +#+  +:+       +#+        */
+/*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 22:29:34 by glamy             #+#    #+#             */
-/*   Updated: 2020/11/28 13:16:08 by glamy            ###   ########.fr       */
+/*   Updated: 2023/05/16 11:56:40 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_ceiling_floor(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	while (j < game->setup.res_height)
@@ -41,26 +41,26 @@ void	set_wall_tex(t_player *player, t_ray *ray)
 		ray->wallx = player->posx + ray->perpwalldist * ray->dirx;
 	ray->wallx -= floor(ray->wallx);
 	ray->texx = (int)(ray->wallx * (double)TEX_WIDTH);
-	if ((ray->side == EAST && ray->dirx > 0) ||
-	(ray->side == SOUTH && ray->diry < 0))
+	if ((ray->side == EAST && ray->dirx > 0)
+		|| (ray->side == SOUTH && ray->diry < 0))
 		ray->texx = TEX_WIDTH - ray->texx - 1;
 }
 
 void	set_wall_color(t_game *game, t_ray *ray, int i)
 {
-	int color;
-	int j;
+	int	color;
+	int	j;
 
 	ray->step = 1.0 * TEX_HEIGHT / ray->lineheight;
-	ray->texpos = (ray->drawstart - game->setup.res_height /
-	2 + ray->lineheight / 2) * ray->step;
+	ray->texpos = (ray->drawstart - game->setup.res_height
+			/ 2 + ray->lineheight / 2) * ray->step;
 	j = ray->drawstart;
 	while (j < ray->drawend)
 	{
 		ray->texy = (int)ray->texpos & (TEX_HEIGHT - 1);
 		ray->texpos += ray->step;
-		color = game->setup.tex.tile[ray->side][TEX_HEIGHT *
-		ray->texy + ray->texx];
+		color = game->setup.tex.tile[ray->side][TEX_HEIGHT
+			* ray->texy + ray->texx];
 		game->buf[j][i] = color;
 		j++;
 	}

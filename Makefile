@@ -6,7 +6,7 @@
 #    By: galamy <galamy@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 09:25:39 by glamy             #+#    #+#              #
-#    Updated: 2023/05/16 01:42:08 by galamy           ###   ########.fr        #
+#    Updated: 2023/05/16 10:03:57 by galamy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 
 HEADER	= -I./includes
 
-CFLAG	= -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAG	= -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFT	= libft.a
 
 LIBMLX	= libmlx.a
 
-LIBS	= -L./libs/libft -lft -L./libs/mlx -lmlx -lXext -lX11 -lm
+LIBS	= -L./libs/libft -lft -L./libs/mlx -framework OpenGL -framework AppKit -lmlx
 
 RM	= rm -rf
 

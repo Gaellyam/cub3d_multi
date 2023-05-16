@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 12:20:56 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/15 22:29:54 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 12:16:17 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_isspace(int c)
 	return (0);
 }
 
-int		is_blank_line(char *line)
+int	is_blank_line(char *line)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!line)
@@ -44,7 +44,7 @@ void	read_map(t_game *game, char *line)
 		if (is_blank_line(line) || line[0] == EMPTY_LINE)
 		{
 			free(line);
-			ft_error_2(game,"ERROR:\n blank line in map",1);
+			ft_error_2(game, "ERROR:\n blank line in map", 1);
 		}
 		if (line[0] == EMPTY_LINE)
 			break ;
@@ -60,21 +60,21 @@ void	read_map(t_game *game, char *line)
 
 void	allocate_map(t_game *game, t_list *curr)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	game->setup.map_height = ft_lstsize(curr);
 	game->setup.map_width = ft_long_cont_lst(curr);
-	if (!(game->setup.map = malloc(sizeof(char *)
-	* (game->setup.map_height + 1))))
-		ft_error_2(game,"ERROR:\n Malloc Fail!",1);
+	game->setup.map = malloc(sizeof(char *) * (game->setup.map_height + 1));
+	if (!game->setup.map)
+		ft_error_2(game, "ERROR:\n Malloc Fail!", 1);
 	game->setup.map[game->setup.map_height] = NULL;
 	i = 0;
 	while (curr)
 	{
-		if (!(game->setup.map[i] = malloc(sizeof(char)
-		* (game->setup.map_width + 1))))
-			ft_error_2(game,"ERROR:\n Malloc Fail!",1);
+		game->setup.map[i] = malloc(sizeof(char) * (game->setup.map_width + 1));
+		if (!game->setup.map[i])
+			ft_error_2(game, "ERROR:\n Malloc Fail!", 1);
 		j = 0;
 		while (j < game->setup.map_width)
 		{
@@ -101,7 +101,7 @@ void	store_map_as_array(t_game *game, t_list *curr)
 		while (j < (int)ft_strlen(content))
 		{
 			if (!ft_isset(content[j], "NSWE01 \n") && content[j] != '\0')
-				ft_error_2(game,"ERROR:\n Invalid Map Element Contained!",1);
+				ft_error_2(game, "ERROR:\n Invalid Map Element Contained!", 1);
 			game->setup.map[i][j] = content[j];
 			if (ft_isset(content[j], "NSWE"))
 				init_player(game, i, j);

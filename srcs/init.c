@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:43:43 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/15 22:30:33 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 13:06:05 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_setup(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < PARAMS)
@@ -25,7 +25,6 @@ void	init_setup(t_game *game)
 	game->setup.tex.path[C_SO] = NULL;
 	game->setup.tex.path[C_WE] = NULL;
 	game->setup.tex.path[C_EA] = NULL;
-	//ft_memset(game->setup.tex.path, 0, 3);
 	game->setup.tex.floor = -1;
 	game->setup.tex.ceiling = -1;
 	game->setup.map = NULL;
@@ -39,7 +38,7 @@ void	init_setup(t_game *game)
 void	init_player(t_game *game, int i, int j)
 {
 	if (game->player.dir)
-		ft_error_2(game,"ERROR:\n Multiple Player Postions Given!",1);
+		ft_error_2(game, "Error:\n Multiple Player Postions Given!", 1);
 	game->player.dir = game->setup.map[i][j];
 	game->player.dir_x = -1.0;
 	game->player.dir_y = 0.0;

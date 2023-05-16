@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:02:46 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 00:37:49 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 12:11:43 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	iscubefile(char *filename)
 {
-	int ret;
-	int len;
+	int	ret;
+	int	len;
 
 	ret = 1;
 	len = ft_strlen(filename);
@@ -27,7 +27,7 @@ static int	iscubefile(char *filename)
 		return (0);
 }
 
-void		open_cub(t_game *game, char *filename)
+void	open_cub(t_game *game, char *filename)
 {
 	if (!(iscubefile(filename)))
 		ft_error("ERROR:\n Not .cub extention!");
@@ -36,9 +36,8 @@ void		open_cub(t_game *game, char *filename)
 		ft_error("ERROR:\n No such cub file available");
 }
 
-int			check_param(t_game *game, char *info)
+int	check_param(t_game *game, char *info)
 {
-	
 	if (info[0] == 'N' && info[1] == 'O' && info[2] == ' ')
 		parse_texture(game, info, C_NO);
 	else if (info[0] == 'S' && info[1] == 'O' && info[2] == ' ')
@@ -56,7 +55,7 @@ int			check_param(t_game *game, char *info)
 	return (0);
 }
 
-void		read_info(t_game *game)
+void	read_info(t_game *game)
 {
 	char	*line;
 	int		flag;
@@ -65,8 +64,9 @@ void		read_info(t_game *game)
 	while (get_next_line2(game->fd, &line) > 0)
 	{
 		if ((!line || line[0] == EMPTY_LINE) && flag != MAP_START)
-			continue;
-		if (!(info = ft_strtrim(line, " ")))
+			continue ;
+		info = ft_strtrim(line, " ");
+		if (!info)
 			ft_error("ERROR:\n Strtrim fail!");
 		flag = check_param(game, info);
 		free(info);
@@ -77,7 +77,7 @@ void		read_info(t_game *game)
 	game->line = line;
 }
 
-void		validate_info(t_game *game)
+void	validate_info(t_game *game)
 {
 	if (!game->setup.tex.path[C_NO] || !game->setup.tex.path[C_SO]
 		|| !game->setup.tex.path[C_EA] || !game->setup.tex.path[C_WE]

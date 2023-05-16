@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 10:29:22 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 00:17:41 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 13:54:34 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	check_color(char **buf, int i)
 	j = 0;
 	while (j < 3)
 		colors[j++] = 0;
+	if (!buf[0] || !buf[1]|| !buf[2])
+			ft_error("Error:\n Color arguments not given!");
 	if (i == 3)
 	{
-		if (buf[0] == NULL || buf[1] == NULL || buf[2] == NULL)
-			ft_error("Error:\n Color arguments not given!");
 		if (!str_isdigit(buf[0]) || !str_isdigit(buf[1])
 		|| !str_isdigit(buf[2]))
 			ft_error("Error:\n Digit color not valid given!");

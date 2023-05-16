@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 21:29:34 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 01:49:58 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 11:59:19 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void	calculate_wall_distance(t_player *player, t_ray *ray)
 {
 	if (ray->side == WEST || ray->side == EAST)
 		ray->perpwalldist = (ray->mapx - player->posx
-		+ (1 - ray->stepx) / 2) / ray->dirx;
+				+ (1 - ray->stepx) / 2) / ray->dirx;
 	else
 		ray->perpwalldist = (ray->mapy - player->posy
-		+ (1 - ray->stepy) / 2) / ray->diry;
+				+ (1 - ray->stepy) / 2) / ray->diry;
 }
 
 void	calculate_wall_height(t_game *game, t_ray *ray)

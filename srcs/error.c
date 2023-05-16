@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:24:11 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/15 22:46:07 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 12:19:57 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_error_2(t_game *game, char *str, int code)
 
 void	ft_free_tab(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

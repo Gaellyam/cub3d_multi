@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 11:50:00 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/15 23:14:32 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/16 11:58:39 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	run_game(t_game *game)
 {
-	if (!(game->win = mlx_new_window(game->mlx,
-	game->setup.res_width, game->setup.res_height, "cub3d")))
-		exit_game(game,"ERROR\n Creating windows fail.\n",1);
+	game->win = mlx_new_window(game->mlx,
+			game->setup.res_width, game->setup.res_height, "cub3d");
+	if (!game->win)
+		exit_game(game, "ERROR\n Creating windows fail.\n", 1);
 	mlx_hook(game->win, EVENT_KEY_PRESS, 0, &key_press, game);
 	mlx_hook(game->win, EVENT_KEY_EXIT, 0, &key_exit, game);
 	mlx_loop_hook(game->mlx, &main_loop, game);
 	mlx_loop(game->mlx);
 }
 
-int		main_loop(t_game *game)
+int	main_loop(t_game *game)
 {
 	raycast(game);
 	render(game);
@@ -32,7 +33,7 @@ int		main_loop(t_game *game)
 
 void	raycast(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	set_ceiling_floor(game);
@@ -52,8 +53,8 @@ void	raycast(t_game *game)
 
 void	render(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	while (j < game->setup.res_height)
