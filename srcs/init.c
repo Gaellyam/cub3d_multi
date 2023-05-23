@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:43:43 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 13:06:05 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/23 13:14:55 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_player(t_game *game, int i, int j)
 	game->player.plane_x = 0.0;
 	game->player.plane_y = 0.66;
 	game->player.move_speed = 0.2;
-	game->player.rot_speed = 0.08;
+	game->player.rot_speed = 0.1;
 	game->player.posx = 0.5f + j;
 	game->player.posy = 0.5f + i;
 	game->setup.map[i][j] = '0';

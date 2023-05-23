@@ -6,12 +6,16 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 13:08:02 by glamy             #+#    #+#             */
-/*   Updated: 2023/05/16 13:32:47 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/23 12:03:29 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 16
+# endif
 
 # define FALSE 0
 # define TRUE 1
@@ -57,8 +61,7 @@
 # include "../libs/libft/libft.h"
 # include "../libs/mlx/mlx.h"
 
-
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double		camerax;
 	double		dirx;
@@ -85,7 +88,7 @@ typedef struct	s_ray
 	int			texy;
 }				t_ray;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void		*img;
 	int			*data;
@@ -96,7 +99,7 @@ typedef struct	s_img
 	int			height;
 }				t_img;
 
-typedef struct	s_tex
+typedef struct s_tex
 {
 	char		*path[6];
 	int			tile[6][TEX_WIDTH * TEX_HEIGHT];
@@ -106,7 +109,7 @@ typedef struct	s_tex
 	int			theight;
 }				t_tex;
 
-typedef struct	s_setup
+typedef struct s_setup
 {
 	int			param[PARAMS];
 	int			res_width;
@@ -117,7 +120,7 @@ typedef struct	s_setup
 	int			map_height;
 }				t_setup;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	double		posx;
 	double		posy;
@@ -130,7 +133,7 @@ typedef struct	s_player
 	char		dir;
 }				t_player;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
@@ -146,10 +149,10 @@ typedef struct	s_game
 }				t_game;
 
 //error.c
-int			ft_error(char *str);
-int	ft_error_2(t_game *game, char *str, int code);
-void	exit_game(t_game *game, char *str, int code);
-void	ft_free_tab(char **str);
+int				ft_error(char *str);
+int				ft_error_2(t_game *game, char *str, int code);
+void			exit_game(t_game *game, char *str, int code);
+void			ft_free_tab(char **str);
 //cub3d.c
 void			check_argument(int argc);
 //param.c
@@ -172,8 +175,10 @@ void			allocate_map(t_game *game, t_list *curr);
 void			store_map_as_array(t_game *game, t_list *curr);
 // parce_map.c
 void			validate_map(t_game *game);
-void			validate_map_horizontal(t_game *game,char **map, int width, int height);
-void			validate_map_vertical(t_game *game,char **map, int width, int height);
+void			validate_map_horizontal(t_game *game, char **map,
+					int width, int height);
+void			validate_map_vertical(t_game *game, char **map,
+					int width, int height);
 // run.c
 void			run_game(t_game *game);
 int				main_loop(t_game *game);
@@ -210,11 +215,8 @@ void			allocate_buffer(t_game *game);
 void			load_texture(t_game *game);
 void			load_image(t_game *game, int *texture, char *path, t_img *img);
 
-void	ft_check_size_res(t_game *game);
-int	ft_atoi2(const char *str);
+void			ft_check_size_res(t_game *game);
+int				ft_atoi2(const char *str);
+int				is_blank_line(char *line);
 
-#endif
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 16
 #endif

@@ -47,5 +47,4 @@
 
 
 ### CHOSE A FIX
--> parse color
--> blank line
+* blank line

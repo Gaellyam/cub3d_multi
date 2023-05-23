@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:54:08 by galamy            #+#    #+#             */
-/*   Updated: 2023/05/16 13:31:47 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/23 12:05:25 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ char	*before_end_line(char *save);
 char	*ft_strjoin_free(char *s1, char *s2);
 long	ft_atol(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_atoi2(const char *str);
 #endif

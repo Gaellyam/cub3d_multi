@@ -6,7 +6,7 @@
 /*   By: galamy <galamy@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:45:50 by galamy            #+#    #+#             */
-/*   Updated: 2023/05/16 13:32:19 by galamy           ###   ########.fr       */
+/*   Updated: 2023/05/23 12:29:49 by galamy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,23 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	nb *= c;
+	return (nb);
+}
+
+int	ft_atoi2(const char *str)
+{
+	long int	nb;
+
+	nb = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		nb = nb * 10 + (*str - 48);
+		str++;
+	}
+	if (nb > 255)
+		return (-1);
 	return (nb);
 }
